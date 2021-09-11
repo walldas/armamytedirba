@@ -1,0 +1,50 @@
+body {
+	/* background-color: #000; */
+	/* color: white; */
+	font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+  grid-template-columns: 1fr 50px 1fr 1fr;
+  display: grid | inline-grid;  
+}
+
+.login_center {
+	padding:0;
+	margin: 30% 0%;
+	text-align: center;
+}
+
+	
+.login_center > form > input{
+	color:red;
+	background: transparent;
+	border:none;
+	
+	outline: none;
+	text-align: center;
+	padding:10px;
+	width:30%;
+}
+
+.hide{
+	display:none;
+}
+
+.wrong_pass{	
+	/* animation: glowing 0.7s infinite; */
+	animation: glowing 1s  3;
+	animation-delay: 1s;
+}
+
+
+@keyframes glowing{
+	0%   {box-shadow: 0px 0px 0px 0px  red;border-bottom: 1px solid white;}
+	50%  {box-shadow: 0px 0px 10px 10px  red;border-bottom: 1px solid rgba(255,0,0,0.95);}
+	100% {box-shadow: 0px 0px 0px 0px  red;border-bottom: 1px solid white;}
+}
+.line {	
+		border-bottom: 1px solid white;
+		width: 30%;
+		margin: 0 auto;		
+}	
