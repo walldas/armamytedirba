@@ -69,7 +69,7 @@ def index():
 	
 @app.errorhandler(404)
 def not_found(e):
-	index()
+	return index()
 	
 	
 if __name__=="__main__":
