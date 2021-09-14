@@ -67,6 +67,10 @@ def index():
 	state, color = work()
 	return render_template("base.html",w_state=state,w_color=color,weeks=weeks)
 	
+@app.errorhandler(404)
+def not_found(e):
+	index()
+	
 	
 if __name__=="__main__":
 	app.run(debug=0, host="0.0.0.0", port=5000 , threaded=True)
