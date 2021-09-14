@@ -51,51 +51,12 @@ def work():
 app = Flask(__name__)
 
 @app.route("/")
-def main():
+def index():
 	weeks = to_table()
 	state, color = work()
 	return render_template("base.html",w_state=state,w_color=color,weeks=weeks)
 	
 	
 if __name__=="__main__":
-	app.run(debug=False, host="0.0.0.0", port=5000 , threaded=True)
-
-
-
-
-
-
-main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	app.run(debug=True, host="0.0.0.0", port=5000 , threaded=True)
 
