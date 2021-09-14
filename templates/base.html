@@ -3,14 +3,14 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"> -->
 	<!-- <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/> -->
 
 	
 	
 	
 	
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 	<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 	
 	<link rel="stylesheet" href="../static/css/style.css">
@@ -18,12 +18,28 @@
 </head>
 <body style= "background-color:rgb{{w_color}}"}>
 
-	<div class="container">
-		<div class="login_center"> 
+	<div class="container ">
+		 
 		
-			<h1>Mamytei {{w_state}}</h1>
-		</div>
-	
+		<h1 class="main_title">Mamytei {{w_state}}</h1>
+		
+		<table >
+		    <th>P</th>
+		    <th>A</th>
+		    <th>T</th>
+		    <th>K</th>
+		    <th>Pe</th>
+		    <th>Š</th>
+		    <th>S</th>
+		{% for week in weeks %}
+			<tr>
+				{% for day in week %}
+					<td style="border: solid 3px rgba{{day[2]}};">{{day[1]}}</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+		  
+		</table>
 	
 	</div>
 		
