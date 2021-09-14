@@ -36,9 +36,20 @@ def to_table():
 			week = [day]
 	# if not len(week) == 7:
 		# weeks.append(week)
+	n_weeks = []
+	n_week=[]
+	wkdays = ["P","A","T","K","Pe","Š","S"]
+	wkdays = [[0,wk,(0,255,0,0)] for wk in wkdays]
+	i = 0
+	while i <7:
+		n_week.append(wkdays[i])
+		for week in weeks:
+			n_week.append(week[i])
+		n_weeks.append(n_week)
+		n_week=[]
+		i+=1
 		
-		
-	return weeks
+	return n_weeks
 	
 	
 def work():
@@ -58,5 +69,5 @@ def index():
 	
 	
 if __name__=="__main__":
-	app.run(debug=False, host="0.0.0.0", port=5000 , threaded=True)
+	app.run(debug=1, host="0.0.0.0", port=5000 , threaded=True)
 
