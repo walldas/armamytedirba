@@ -70,8 +70,8 @@ def index():
 @app.errorhandler(404)
 def not_found(e):
 	return index()
-	
-	
+
+
 if __name__=="__main__":
-	app.run(debug=0, host="0.0.0.0", port=5000 , threaded=True)
+	app.run(debug=1, host="0.0.0.0", port=5000 , threaded=True)
 
