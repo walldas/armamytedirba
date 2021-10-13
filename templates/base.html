@@ -8,7 +8,7 @@
 
 	
 	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-	<title> Mamyte</title>
+	<title> Mamytei {{w_state}}</title>
 	
 	<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 	<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
@@ -28,11 +28,35 @@
 		{% for week in weeks %}
 			<tr>
 				{% for day in week %}
-					<td style="border: solid 3px rgba{{day[2]}};">{{day[1]}}</td>
+					<td style="border: solid 3px rgba{{day[2]}};">
+						
+						{% if day[4]==1 %}
+							<img src="{{ url_for('static', filename='img/1.jpg') }}">
+						{% elif day[4]==2 %}
+							<img src="{{ url_for('static', filename='img/2.jpg') }}">
+						{% elif day[4]==3 %}
+							<img src="{{ url_for('static', filename='img/3.jpg') }}">
+						{% elif day[4]==4 %}
+							<img src="{{ url_for('static', filename='img/4.jpg') }}">
+						{% endif %}
+						
+					{{day[1]}}
+					</td>
 				{% endfor %}
 			</tr>
 		{% endfor %}
 		</table>
+		
+		<!-- <img src="{{ url_for('static', filename='img/1.jpg') }}"> -->
+		<!-- <img src="{{ url_for('static', filename='img/2.jpg') }}"> -->
+		<!-- <img src="{{ url_for('static', filename='img/3.jpg') }}"> -->
+		<!-- <img src="{{ url_for('static', filename='img/4.jpg') }}"> -->
+		
+		
+		
+		
+		
+		
 	</div>
 		
 	
