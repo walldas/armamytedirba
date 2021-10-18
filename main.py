@@ -33,10 +33,39 @@ def add_moon_phases(days):
 	# print("full",ephem.next_full_moon(date))
 	# print("3/4",ephem.next_last_quarter_moon(date))
 	# print("new",ephem.next_new_moon(date))
-	
-	
 	# return days
-
+	
+def calcEasterDate():
+	dd = int(time.time())
+	year = int(datetime.fromtimestamp(dd).strftime('%y'))+2000
+	special_years = ['1954', '1981', '2049', '2076']
+	specyr_sub = 7
+	a = year % 19
+	b = year % 4
+	c = year % 7
+	d = (19 * a + 24) % 30
+	e = ((2 * b) + (4 * c) + (6 * d) + 5) % 7
+	if year in special_years:
+		dateofeaster = (22 + d + e) - specyr_sub
+	else:
+		dateofeaster = 22 + d + e
+	if dateofeaster > 31:
+		return [4, dateofeaster - 31]
+	else:
+		return [3, dateofeaster]
+		
+		
+def add_no_work(days):
+	no_work_days = [ [1,1], [2,16], [3,11], [5,1], [6,24], [7,6], [8,15], [11,1], [11,2], [12,24], [12,25], [12,26]]
+	no_work_days.append(calcEasterDate())
+	#prideti motinos diena pirmasis geguzes sekmadienis
+	#prideti tevo diena pirmasis birzelio sekmadienis
+	for no_work_day in no_work_days:
+		for day in days:
+			if day[1] == no_work_day[1] and day[3] == no_work_day[0]:
+				day[5] = 1
+				break
+	
 	
 def i_to_state(i):
 	return ["antra naktinė", " pirma laisva", "antra laisva", "trečia laisva", "pirma dieninė","antra dieninė", "laisva diena", "pirma naktinė"][i] 
@@ -50,15 +79,17 @@ def i_to_border_color(i):
 
 def to_table():
 	days = []
-	for d in range(0,31,1):
+	for d in range(0,29,1):
 		dd = int(time.time() + d * 60 * 60 * 24)
 		day = int(datetime.fromtimestamp(dd).strftime('%d'))
 		month = int(datetime.fromtimestamp(dd).strftime('%m'))
 		week= datetime.fromtimestamp(dd).isoweekday() - 1
 		i = dd // (60 * 60 * 24) % 8
 		moon = ""
-		days.append([week, day, i_to_border_color(i),month, moon])
+		no_work_day = ""
+		days.append([week, day, i_to_border_color(i),month, moon, no_work_day])
 	add_moon_phases(days)
+	add_no_work(days)
 	weeks = []
 	week =[]
 	[week.append([wk,"",(0,255,0,0)]) for wk in range(days[0][0])]
